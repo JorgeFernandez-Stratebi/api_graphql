@@ -5,15 +5,15 @@ schema {
 type Product {
     id: ID!
     name: String!
-    standardCost: Int!
-    listPrice: Int!
+    standard_cost: Float
+    list_price: Float
 }
 
 type Manufacture {
     id_manufacture: ID!
     id_product: Int!
-    REALCOST: Float!
-    QUANTITY: Int!
+    REALCOST: Float
+    QUANTITY: Int
 }
 
 type ProductResult {

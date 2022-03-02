@@ -1,15 +1,31 @@
 from api import db
 
 
-class Product(db.model):
-    id = db.Column(db.Integer, primary_key=True)
+class d_product(db.Model):
+    id_product = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    standardCost = db.Column(db.Integer)
-    listPrice = db.Column(db.Integer)
+    standardCost = db.Column(db.Numeric)
+    listPrice = db.Column(db.Numeric)
+
+    def to_dict(self):
+        return {
+            "id": self.id_product,
+            "name": self.name,
+            "standard_cost": float(self.standardCost),
+            "list_price": float(self.listPrice)
+        }
 
 
-class Manufacture(db.Model):
+class f_manufactures(db.Model):
     id_manufacture = db.Column(db.Integer, primary_key=True)
     id_product = db.Column(db.Integer)
-    REALCOST = db.Column(db.Float)
+    REALCOST = db.Column(db.Numeric)
     QUANTITY = db.Column(db.Integer)
+
+    def to_dict(self):
+        return {
+            "id_manufacture": self.id_manufacture,
+            "id_product": self.id_product,
+            "REALCOST": float(self.REALCOST),
+            "QUANTITY": self.QUANTITY
+        }
