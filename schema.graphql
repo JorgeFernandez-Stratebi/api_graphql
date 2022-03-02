@@ -3,7 +3,7 @@ schema {
 }
 
 type Product {
-    id: ID!
+    id_product: ID!
     name: String!
     standard_cost: Float
     list_price: Float

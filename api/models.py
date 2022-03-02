@@ -9,7 +9,7 @@ class d_product(db.Model):
 
     def to_dict(self):
         return {
-            "id": self.id_product,
+            "id_product": self.id_product,
             "name": self.name,
             "standard_cost": float(self.standardCost),
             "list_price": float(self.listPrice)
