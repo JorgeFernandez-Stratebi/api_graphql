@@ -1,0 +1,48 @@
+schema {
+    query: Query
+}
+
+type Product {
+    id: ID!
+    name: String!
+    standardCost: Int!
+    listPrice: Int!
+}
+
+type Manufacture {
+    id_manufacture: ID!
+    id_product: Int!
+    REALCOST: Float!
+    QUANTITY: Int!
+}
+
+type ProductResult {
+    success: Boolean!
+    errors: [String]
+    product: Product
+}
+
+type ProductListResult {
+    success: Boolean!
+    errors: [String]
+    product: [Product]
+}
+
+type ManufactureResult {
+    success: Boolean!
+    errors: [String]
+    manufacture: Manufacture
+}
+
+type ManufactureListResult {
+    success: Boolean!
+    errors: [String]
+    manufacture: [Manufacture]
+}
+
+type Query {
+    getProduct: ProductResult!
+    listProduct: ProductListResult!
+    getManufacture: ManufactureResult!
+    listManufactures: ManufactureListResult!
+}
