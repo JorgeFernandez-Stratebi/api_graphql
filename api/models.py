@@ -23,9 +23,14 @@ class f_manufactures(db.Model):
     QUANTITY = db.Column(db.Integer)
 
     def to_dict(self):
+        if self.REALCOST is None:
+            self.REALCOST = 0
+
+        if self.QUANTITY is None:
+            self.QUANTITY = 0
         return {
             "id_manufacture": self.id_manufacture,
             "id_product": self.id_product,
-            "REALCOST": float(self.REALCOST),
-            "QUANTITY": self.QUANTITY
+            "real_cost": float(self.REALCOST),
+            "quantity": self.QUANTITY
         }

@@ -2,11 +2,13 @@ from api import app, db
 from ariadne import load_schema_from_path, make_executable_schema, graphql_sync, snake_case_fallback_resolvers, ObjectType
 from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
-from api.queries import listProduct_resolver, getProduct_resolver
+from api.queries import listProduct_resolver, getProduct_resolver, listManufactures_resolver, getManufacture_resolver
 
 query = ObjectType("Query")
 query.set_field("listProduct", listProduct_resolver)
 query.set_field("getProduct", getProduct_resolver)
+query.set_field("listManufactures", listManufactures_resolver)
+query.set_field("getManufacture", getManufacture_resolver)
 
 type_defs = load_schema_from_path("schema.graphql")
 schema = make_executable_schema(type_defs, query, snake_case_fallback_resolvers)

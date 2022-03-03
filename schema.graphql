@@ -12,8 +12,8 @@ type Product {
 type Manufacture {
     id_manufacture: ID!
     id_product: Int!
-    REALCOST: Float
-    QUANTITY: Int
+    real_cost: Float
+    quantity: Int
 }
 
 type ProductResult {
@@ -41,8 +41,8 @@ type ManufactureListResult {
 }
 
 type Query {
-    getProduct: ProductResult!
+    getProduct(id_product: ID!): ProductResult!
     listProduct: ProductListResult!
-    getManufacture: ManufactureResult!
+    getManufacture(id_manufacture: ID!): ManufactureResult!
     listManufactures: ManufactureListResult!
 }
