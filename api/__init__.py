@@ -1,11 +1,10 @@
 from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-import pymysql
-import secrets
+from api.secrets import DbSecrets
 
-# conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(secrets.dbuser, secrets.dbpass, secrets.dbhost, secrets.dbname)
-conn = "mysql+pymysql://root:root@localhost/dw_adventureworks"
+credentials = DbSecrets()
+conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(credentials.dbuser, credentials.dbpass, credentials.dbhost, credentials.dbname)
 app = Flask(__name__)
 CORS(app)
 
