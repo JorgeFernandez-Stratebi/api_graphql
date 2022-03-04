@@ -20,6 +20,7 @@ def listProduct_resolver(obj, info):
 def getProduct_resolver(obj, info, id_product):
     try:
         product = d_product.query.get(id_product)
+        print(product)
         response = {
             "success": True,
             "product": product.to_dict()

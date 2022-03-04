@@ -6,13 +6,17 @@ class d_product(db.Model):
     name = db.Column(db.String)
     standardCost = db.Column(db.Numeric)
     listPrice = db.Column(db.Numeric)
+    productLine = db.Column(db.String)
+
+    prod_line_complete = {"R ": "Road", "M ": "Mountain", "T ": "Touring", "S ": "Standard"}
 
     def to_dict(self):
         return {
             "id_product": self.id_product,
             "name": self.name,
             "standard_cost": float(self.standardCost),
-            "list_price": float(self.listPrice)
+            "list_price": float(self.listPrice),
+            "product_line": self.prod_line_complete.get(self.productLine)
         }
 
 

@@ -1,5 +1,6 @@
 schema {
     query: Query
+    mutation: Mutation
 }
 
 type Product {
@@ -7,6 +8,7 @@ type Product {
     name: String!
     standard_cost: Float
     list_price: Float
+    product_line: String
 }
 
 type Manufacture {
@@ -45,4 +47,8 @@ type Query {
     listProduct: ProductListResult!
     getManufacture(id_manufacture: ID!): ManufactureResult!
     listManufactures: ManufactureListResult!
+}
+
+type Mutation {
+    createProduct(name: String!, standard_cost: Float!, list_price: Float!): ProductResult!
 }
