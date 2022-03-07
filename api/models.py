@@ -7,6 +7,7 @@ class d_product(db.Model):
     standardCost = db.Column(db.Numeric)
     listPrice = db.Column(db.Numeric)
     productLine = db.Column(db.String)
+    updateDate = db.Column(db.DateTime)
 
     prod_line_complete = {"R ": "Road", "M ": "Mountain", "T ": "Touring", "S ": "Standard"}
 
@@ -16,7 +17,8 @@ class d_product(db.Model):
             "name": self.name,
             "standard_cost": float(self.standardCost),
             "list_price": float(self.listPrice),
-            "product_line": self.prod_line_complete.get(self.productLine)
+            "product_line": self.prod_line_complete.get(self.productLine),
+            "update_date": str(self.updateDate)
         }
 
 

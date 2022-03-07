@@ -9,6 +9,7 @@ type Product {
     standard_cost: Float
     list_price: Float
     product_line: String
+    update_date: String
 }
 
 type Manufacture {
@@ -50,5 +51,7 @@ type Query {
 }
 
 type Mutation {
-    createProduct(name: String!, standard_cost: Float!, list_price: Float!): ProductResult!
+    createProduct(id_product: ID!, name: String!, standard_cost: Float!, list_price: Float!, product_line: String!, update_date: String): ProductResult!
+    updateProduct(id_product: ID!, name: String, standard_cost: Float, list_price: Float, product_line: String, update_date: String): ProductResult!
+    deleteProduct(id_product: ID): ProductResult!
 }
