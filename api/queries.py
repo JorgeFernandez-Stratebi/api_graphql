@@ -1,4 +1,4 @@
-from .models import d_product, f_manufactures
+from .models import d_product, inventory
 from ariadne import convert_kwargs_to_snake_case
 
 
@@ -15,6 +15,7 @@ def listProduct_resolver(obj, info):
             "errors": [str(error)]
         }
     return response
+
 
 @convert_kwargs_to_snake_case
 def getProduct_resolver(obj, info, id_product):
@@ -33,12 +34,13 @@ def getProduct_resolver(obj, info, id_product):
 
     return response
 
-def listManufactures_resolver(obj, info):
+
+def listInventory_resolver(obj, info):
     try:
-        manufactures = [manufacture.to_dict() for manufacture in f_manufactures.query.all()]
+        inventory_list = [element.to_dict() for element in inventory.query.all()]
         response = {
             "success": True,
-            "manufacture": manufactures
+            "inventory": inventory_list
         }
     except Exception as error:
         response = {
@@ -49,16 +51,17 @@ def listManufactures_resolver(obj, info):
 
 
 @convert_kwargs_to_snake_case
-def getManufacture_resolver(obj, info, id_manufacture):
+def getInventory_resolver(obj, info, id_product):
     try:
-        manufacture = f_manufactures.query.get(id_manufacture)
+        inv_result = inventory.query.get(id_product)
+        print(inv_result.to_dict())
         response = {
             "success": True,
-            "manufacture": manufacture.to_dict()
+            "inventory": inv_result.to_dict()
         }
     except AttributeError:
         response = {
             "success": False,
-            "errors": ["Manufacture matching {id} not found"]
+            "errors": ["Product matching {id} not found"]
         }
     return response

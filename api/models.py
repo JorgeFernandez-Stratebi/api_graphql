@@ -22,21 +22,12 @@ class d_product(db.Model):
         }
 
 
-class f_manufactures(db.Model):
-    id_manufacture = db.Column(db.Integer, primary_key=True)
-    id_product = db.Column(db.Integer)
-    REALCOST = db.Column(db.Numeric)
-    QUANTITY = db.Column(db.Integer)
+class inventory(db.Model):
+    id_product = db.Column(db.Integer, primary_key=True)
+    amount = db.Column(db.Integer)
 
     def to_dict(self):
-        if self.REALCOST is None:
-            self.REALCOST = 0
-
-        if self.QUANTITY is None:
-            self.QUANTITY = 0
         return {
-            "id_manufacture": self.id_manufacture,
             "id_product": self.id_product,
-            "real_cost": float(self.REALCOST),
-            "quantity": self.QUANTITY
+            "amount": self.amount
         }

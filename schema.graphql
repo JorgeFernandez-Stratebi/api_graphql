@@ -12,11 +12,9 @@ type Product {
     update_date: String
 }
 
-type Manufacture {
-    id_manufacture: ID!
-    id_product: Int!
-    real_cost: Float
-    quantity: Int
+type Inventory {
+    id_product: ID!
+    amount: Int
 }
 
 type ProductResult {
@@ -31,23 +29,23 @@ type ProductListResult {
     product: [Product]
 }
 
-type ManufactureResult {
+type InventoryResult {
     success: Boolean!
     errors: [String]
-    manufacture: Manufacture
+    inventory: Inventory
 }
 
-type ManufactureListResult {
+type InventoryListResult {
     success: Boolean!
     errors: [String]
-    manufacture: [Manufacture]
+    inventory: [Inventory]
 }
 
 type Query {
     getProduct(id_product: ID!): ProductResult!
     listProduct: ProductListResult!
-    getManufacture(id_manufacture: ID!): ManufactureResult!
-    listManufactures: ManufactureListResult!
+    getInventory(id_product: ID!): InventoryResult!
+    listInventory: InventoryListResult!
 }
 
 type Mutation {
